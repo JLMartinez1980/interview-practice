@@ -338,3 +338,65 @@ const vowelsOutput = countVowels("Prediction")
 console.log(vowelsOutput);
 
 console.log('__________________October 30 ^__________________________');
+
+/*
+Create a function which returns the number of true values there are in an array.
+*/
+
+countTrue = (arr) => {
+  if (arr.length === 0) {
+    return [];
+  }
+  let counter = 0;
+  for (let value of arr) {
+    if (value === true) {
+      counter++
+    }
+  }
+  return counter;
+}
+
+const trueOutput = countTrue([true, false, false, true, false]);
+console.log(trueOutput);
+
+/*
+Return the sum of all items in an array, where each item is multiplied by
+its index (zero-based). For empty arrays, return 0.
+*/
+
+indexMultiplier = (arr) => {
+  if (arr.length === 0) {
+    return 0;
+  }
+  const multiplier = arr.reduce(  (runningTotal, currentValue, index) => {
+    return runningTotal + (currentValue * index);
+  }, 0);
+  return multiplier;
+}
+
+const indexOutput = indexMultiplier([1, 2, 3, 4, 5]);
+console.log('indexOutput', indexOutput);
+const indexOfOne = indexMultiplier([-3, 0, 8, -6]);
+console.log('indexOfOne', indexOfOne);
+
+/*
+Total Volume of All Boxes
+Given an array of boxes, create a function that returns the total volume of all
+those boxes combined together. A box is represented by an array with three elements:
+length, width and height.
+
+For instance, totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1])
+should return 266 since (2 x 3 x 2) + (6 x 6 x 7) + (1 x 2 x 1) = 12 + 252 + 2 = 266.
+*/
+totalVolume = (...boxes) => {
+  const findVolume = boxes.reduce( (runningTotal, currentValue, index) => {
+    const numbers = currentValue.map( (num) => {
+      return num * runningTotal;
+    })
+    console.log('numbers', numbers);
+  }, 1)
+}
+
+
+const volumeOutput = totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]);
+console.log('volumeOutput', volumeOutput);
