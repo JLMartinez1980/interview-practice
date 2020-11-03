@@ -378,7 +378,7 @@ const indexOutput = indexMultiplier([1, 2, 3, 4, 5]);
 console.log('indexOutput', indexOutput);
 const indexOfOne = indexMultiplier([-3, 0, 8, -6]);
 console.log('indexOfOne', indexOfOne);
-
+console.log('_______________________Nov 2 ^ ____________________')
 /*
 Total Volume of All Boxes
 Given an array of boxes, create a function that returns the total volume of all
@@ -389,14 +389,81 @@ For instance, totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1])
 should return 266 since (2 x 3 x 2) + (6 x 6 x 7) + (1 x 2 x 1) = 12 + 252 + 2 = 266.
 */
 totalVolume = (...boxes) => {
-  const findVolume = boxes.reduce( (runningTotal, currentValue, index) => {
-    const numbers = currentValue.map( (num) => {
-      return num * runningTotal;
-    })
-    console.log('numbers', numbers);
-  }, 1)
-}
+  const findVolume = boxes.map( (box) => {
+    return box.reduce( (runningTotal, currentValue) => {
+      return runningTotal * currentValue
+    }, 1);
+  })
+
+  const findSum = findVolume.reduce( (runningValue, currentTotal) => {
+    return runningValue + currentTotal
+  }, 0);
+  return findSum;
+};
 
 
 const volumeOutput = totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]);
 console.log('volumeOutput', volumeOutput);
+
+console.log('___________________________________________')
+
+/*
+Write a function that creates an object with each (key, value) pair being the
+(lower case, upper case) versions of a letter, respectively.
+*/
+mapping = (letters) => {
+  const letterObj = {};
+  const changeCase = letters.map( (letter) => {
+    const lowerCase = letter;
+    const upperCase = letter.toUpperCase();
+    letterObj[lowerCase] = upperCase
+  })
+  return letterObj
+}
+const mappingOutput = mapping(["p", "s"]);
+console.log('map-return', mappingOutput);
+console.log('___________________________________________')
+
+
+/*
+Shopping for Memorial Day!
+Create a function that will take in an array of objects and calculate the
+total based on the quantity of items purchased. Apply a 6% sales tax for
+each item when appropriate.
+*/
+const tax = .06
+
+function checkout(cart) {
+  const findItems = cart.map( (item) => {
+    return item.qty * item.prc
+  });
+
+  const addTogether = findItems.reduce( (runningTotal, totalCost) => {
+    return runningTotal + totalCost
+  }, 0);
+
+
+
+  let taxable = 0
+
+  const findTax = cart.map( (taxableItems) => {
+    if (taxableItems.taxable) {
+      console.log('taxableItems', taxableItems);
+      taxable += (taxableItems.prc * taxableItems.qty) * tax
+      console.log('taxable', taxable)
+    }
+  });
+
+  return addTogether + taxable;
+}
+
+
+const memorialOutput = checkout([
+		{ desc: "grill", prc: 300, qty: 1, taxable: true },
+		{ desc: "hotdogs", prc: 10, qty: 2, taxable: false },
+		{ desc: "US Flag", prc: 30, qty: 1, taxable: true }
+	]);
+
+console.log(memorialOutput);
+
+console.log('_______________________Nov 3 ^ ____________________')
