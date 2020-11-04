@@ -467,3 +467,66 @@ const memorialOutput = checkout([
 console.log(memorialOutput);
 
 console.log('_______________________Nov 3 ^ ____________________')
+
+/*
+Write a function that has two parameters: orders and cost.
+Return any orders that are greater than the cost.
+*/
+
+expensiveOrders = (orders, cost) => {
+	const lowerCostObj = {};
+
+  for (let price in orders) {
+    if (cost < orders[price]) {
+      lowerCostObj[price] = orders[price]
+    }
+  }
+  return lowerCostObj;
+}
+
+const expensiveOutput = expensiveOrders({ "Gucci Fur": 24600, "Teak Dining Table": 3200, "Louis Vutton Bag": 5550, "Dolce Gabana Heels": 4000 }, 20000)
+
+console.log('expense', expensiveOutput);
+console.log('___________________________________________');
+
+/*
+Create a recursive function that takes two parameters and repeats the string n
+number of times. The first parameter txt is the string to be repeated and the
+second parameter is the number of times the string is to be repeated.
+
+String.prototype.repeat() is not allowed
+*/
+repetition = ( txt, n) => {
+  if (n < 0) {
+    return '';
+  }
+
+  if (n === 1) {
+    return txt
+  } else {
+    return txt + repetition(txt, n-1)
+  }
+}
+const recursionOutput = repetition("ab", 3);
+
+console.log('recursive', recursionOutput);
+// ➞ "ababab"
+
+console.log('___________________________________________');
+
+/*
+Take an array of integers (positive or negative or both) and return
+the sum of the absolute value of each element.
+*/
+function getAbsSum(arr) {
+	const absSum = arr.reduce( (acc, sum) => {
+    sum = Math.abs(sum)
+    return acc + sum;
+  }, 0)
+  return absSum;
+};
+
+const absoluteOutput = getAbsSum([2, -1, 4, 8, 10]);
+console.log('absolute', absoluteOutput);
+// ➞ 25
+console.log('_______________________Nov 4 ^ ____________________')
