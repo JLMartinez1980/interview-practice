@@ -529,4 +529,99 @@ function getAbsSum(arr) {
 const absoluteOutput = getAbsSum([2, -1, 4, 8, 10]);
 console.log('absolute', absoluteOutput);
 // ➞ 25
-console.log('_______________________Nov 4 ^ ____________________')
+console.log('_______________________Nov 4 ^ ____________________');
+
+
+/*
+Given a number n, write a function that returns PI to n decimal places.
+n will not be above 15, to keep this challenge simple.
+Round up the last digit if the next digit in PI is greater or equal to 5 (see second example above).
+The return value must be a number, not a string.
+
+myPi(5) ➞ 3.14159
+
+myPi(4) ➞ 3.1416
+myPi(3) -> 3.142
+myPi(15) ➞ 3.141592653589793
+
+
+
+
+
+function roundPrice(rnum, rlength) {
+    var newnumber = Math.ceil(rnum * Math.pow(10, rlength-1)) / Math.pow(10, rlength-1);
+    var toTenths = newnumber.toFixed(rlength);
+    return toTenths;
+}
+
+alert(roundPrice(678.91011,2)); // returns 679.00
+alert(roundPrice(876.54321,2)); // returns 876.60
+*/
+
+function myPi(n) {
+  let precision = Math.pow(10, n);
+	let currentPi = Math.PI.toFixed(n);
+
+  return currentPi
+}
+
+
+
+console.log(myPi(1));
+
+console.log('___________________________________________');
+
+/*
+Create a function that splits a string into an array of identical clusters.
+
+Each cluster should only have one unique character.
+The resulting array should be in the same order as the input string.
+Should work with letters, numbers and other characters.
+*/
+
+splitGroups = (str) => {
+  return str.match(/(.)\1*/g);
+}
+
+const splitGroupsOutput = splitGroups("aaabbbaabbab")
+console.log(splitGroupsOutput);
+// ➞ ["aaa", "bbb", "aa", "bb", "a", "b"]
+
+console.log('___________________________________________');
+
+/*
+Create a function that takes an integer and returns the factorial
+of that integer. That is, the integer multiplied by all positive lower integers.
+*/
+factorial = (int) => {
+  //IF number is negative, reject it
+  if ( int < 0) {
+    return -1;
+  } else if (int === 1) {
+    return 1;
+  } else {
+    return (int * factorial(int-1));
+  }
+
+  //else && else if else if num === 0 return 1 ||
+    //num * recursive call with argument (num-1);
+}
+const factorialOutput = factorial(5)
+console.log('factorialOutput', factorialOutput);
+// ➞ 120
+
+console.log('___________________________________________');
+/*
+Create a function that returns an array of strings sorted by length in ascending order.
+Strings will have unique lengths, so don't worry about comparing two strings with identical length.
+Return an empty array if the input array is empty (see example #4).
+*/
+
+sortByLength = (arr) => {
+  return arr.sort( (a, b) => a.length - b.length);
+}
+const sortByLengthOutput = sortByLength(["apple", "pie", "shortcake"])
+console.log(sortByLengthOutput);
+ // ➞ ["pie", "apple", "shortcake"]
+
+ console.log('_______________________Nov 5-10 ^ ____________________')
