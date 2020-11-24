@@ -625,3 +625,141 @@ console.log(sortByLengthOutput);
  // ➞ ["pie", "apple", "shortcake"]
 
  console.log('_______________________Nov 5-10 ^ ____________________')
+
+ /*
+Given a number, return an array containing the two halves of the number.
+If the number is odd, make the rightmost number higher.
+All numbers will be integers.
+You can expect negative numbers too.
+ */
+numberSplit = (num) => {
+  let numArray = [];
+  let splitInHalf = num / 2;
+  const firstNumer = Math.floor(splitInHalf);
+  const secondNumber = Math.ceil(splitInHalf);
+  let dividedNum = numArray.push(firstNumer, secondNumber);
+  return numArray;
+}
+
+
+const numSplitOutput = numberSplit(4)
+console.log(`numSplitOutput: ${numSplitOutput}`);
+const numSplitOutput1 = numberSplit(-9);
+console.log(`numSplitOutput1: ${numSplitOutput1}`);
+ // ➞ [2, 2]  -> [-5, -4]
+
+ console.log('___________________________________________');
+
+ /*
+ The insurance guy calls again and apologizes.
+ They found another policy made by your spouse,
+ but this one is limited to cover a particular
+ maximum in losses (for example, 50,000€).
+ You send a bill to your spouse for the difference you lost.
+
+ Given an object of the stolen items and a limit,
+ return the difference between the total value of those items and the limit of the policy.
+ */
+calculateDifference = (obj, limit) => {
+  let adder = 0;
+  for (let price in obj) {
+    adder += obj[price];
+  }
+  return adder - limit;
+};
+const calculateDifferenceOutput = calculateDifference({ skate: 200, painting: 200, shoes: 1 }, 400)
+console.log(`calculateDifferenceOutput: ${calculateDifferenceOutput}`);
+ // ➞ 1
+console.log('___________________________________________');
+//leetcode:
+/*
+You are given two non-empty linked lists representing two non-negative integers.
+The digits are stored in reverse order, and each of their nodes contains a single
+digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+*/
+
+
+addTwoNumbers = (l1, l2) => {
+    const reversedOne = l1.reverse()
+    const reversedTwo = l2.reverse()
+    let adder = 0
+    for (let i = 0; i < reversedOne.length; i++) {
+      let l1ToString = reversedOne[i].toString();
+      let l2ToString = reversedTwo[i].toString()
+      l1ToString += l2ToString;
+
+      console.log('l1', l1ToString)
+    };
+
+    console.log(`adder: ${adder}`);
+};
+
+const l1 = [2,4,3];
+const l2 = [5,6,4];
+
+const addTwoNumbersOutput = addTwoNumbers(l1, l2);
+// Output: [7,0,8]
+// Explanation: 342 + 465 = 807.
+
+console.log('___________________________________________');
+/*
+Create a function which returns the number of true values there are in an array.
+Return 0 if given an empty array.
+All array items are of the type bool (true or false).
+*/
+
+countTrue = (arr) => {
+  return arr.filter(Boolean).length;
+}
+
+const countingTrue = countTrue([true, false, false, true, false]);
+console.log(countingTrue);
+// ➞ 2
+const countingTrue1 = countTrue([]);
+console.log(countingTrue1);
+// ➞ 0
+
+console.log('___________________________________________');
+/*
+Given an object of people and their ages, return how old the
+people would be after n years have passed. Use the absolute value of n.
+*/
+afterNYears = (names, n) => {
+n = Math.abs(n);
+  for (let key in names) {
+    let newAge = names[key] + n;
+
+    names[key] = newAge
+  }
+  return names;
+}
+const agingOutput = afterNYears({
+  "Joel" : 32,
+  "Fred" : 44,
+  "Reginald" : 65,
+  "Susan" : 33,
+  "Julian" : 13
+}, 1);
+console.log(agingOutput)
+ // ➞ {
+//   "Joel" : 33,
+//   "Fred" : 45,
+//   "Reginald" : 66,
+//   "Susan" : 34,
+//   "Julian" : 14
+// }
+
+console.log('___________________________________________');
+
+/*
+Create a function that takes a string and returns a new string with all vowels removed.
+*/
+removeVowels = (str) => {
+  return str.replace(/[aeiou]/ig, '')
+}
+const removeVowelssOutput = removeVowels("I have never seen a thin person drinking Diet Coke.")
+console.log(removeVowelssOutput);
+
+//" hv nvr sn  thn prsn drnkng Dt Ck."
