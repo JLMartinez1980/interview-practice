@@ -763,3 +763,83 @@ const removeVowelssOutput = removeVowels("I have never seen a thin person drinki
 console.log(removeVowelssOutput);
 
 //" hv nvr sn  thn prsn drnkng Dt Ck."
+
+console.log('___________________________________________');
+
+/*
+Create a function that takes an array of numbers and returns the second largest number.
+*/
+
+secondLargest = (arr) => {
+  const max = Math.max.apply(null, arr);
+  arr.splice(arr.indexOf(max), 1);
+  return Math.max.apply(null,arr);
+}
+
+
+const findSecondResult = secondLargest([10, 40, 30, 20, 50])
+
+console.log(`findSecond: ${findSecondResult}`);
+
+console.log('_____________________________________');
+
+/*
+Find the Second Largest Number
+Create a function that takes an array of numbers and returns the second largest number.
+
+
+*/
+secondLargest = (arr) => {
+  const orginizeNums = arr.sort( (a,b) => {return a-b});
+  const notTheLargest = arr[orginizeNums.length -2];
+  return notTheLargest
+}
+const secondLargestOutput = secondLargest([25, 143, 89, 13, 105]);
+console.log(secondLargestOutput);
+
+/*
+Index Multiplier
+Return the sum of all items in an array, where each item is multiplied by its index (zero-based). For empty arrays, return 0.
+*/
+
+indexMultiplier = (arr) => {
+  const multiplyNumbers = arr.map( (num, i) => {
+    return num * i
+  });
+  const addTogether = multiplyNumbers.reduce( (prev, cur) => {
+    return prev + cur
+  },0)
+  return addTogether;
+};
+
+const indexMultiplierOutput = indexMultiplier([1, 2, 3, 4, 5]);
+console.log(indexMultiplierOutput);
+/*
+Total Volume of All Boxes
+Given an array of boxes, create a function that returns the total volume of all
+those boxes combined together. A box is represented by an array with three elements:
+length, width and height.
+
+For instance, totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1])
+ should return 266 since (2 x 3 x 2) + (6 x 6 x 7) + (1 x 2 x 1) = 12 + 252 + 2 = 266.
+*/
+
+totalVolume = (...arr) => {
+  const test = arr.map( (num) => {
+    const findValue = num.reduce(  (prev, index) => {
+      return prev * index
+    }, 1)
+    return findValue;
+  });
+  console.log('test', test);
+  const finalAnswer = test.reduce( (prev, curr) => {
+    console.log('curr', curr);
+    return prev + curr
+  }, 0);
+  console.log('finalAnswer', finalAnswer);
+  return finalAnswer;
+}
+
+
+const totalVolumeOutput = totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]);
+console.log(totalVolumeOutput);
