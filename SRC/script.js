@@ -831,15 +831,157 @@ totalVolume = (...arr) => {
     }, 1)
     return findValue;
   });
-  console.log('test', test);
   const finalAnswer = test.reduce( (prev, curr) => {
-    console.log('curr', curr);
     return prev + curr
   }, 0);
-  console.log('finalAnswer', finalAnswer);
   return finalAnswer;
 }
 
 
 const totalVolumeOutput = totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]);
 console.log(totalVolumeOutput);
+
+
+console.log('------------------------------------------------------');
+
+/*
+Convert Key, Values in an Object to Array
+Write a function that converts an object into an array of keys and values.
+
+Examples
+objectToArray({
+  D: 1,
+  B: 2,
+  C: 3
+}) ➞ [["D", 1], ["B", 2], ["C", 3]]
+
+objectToArray({
+  likes: 2,
+  dislikes: 3,
+  followers: 10
+}) ➞ [["likes", 2], ["dislikes", 3], ["followers", 10]]
+*/
+
+objectToArray = obj => Object.entries(obj);
+
+
+
+const objectToArrayOutput = objectToArray({
+  likes: 2,
+  dislikes: 3,
+  followers: 10
+});
+
+console.log('objectToArrayOutput', objectToArrayOutput);
+
+
+/*
+The Reverser!
+The "Reverser" takes a string as input and returns that string in reverse order, with the opposite case.
+
+Examples
+reverse("Hello World") ➞ "DLROw OLLEh"
+
+reverse("ReVeRsE") ➞ "eSrEvEr"
+
+reverse("Radar") ➞ "RADAr"
+*/
+
+
+reverse = (str) => {
+  str = str.split('');
+
+  const stepOne = str.reverse();
+  let stepTwo = stepOne.join('');
+
+  stepTwo = stepTwo.split('');
+  let newWord = ''
+    for (let i = 0; i < stepTwo.length; i++) {
+      if (stepTwo[i] === stepTwo[i].toLowerCase()) {
+        newWord += stepTwo[i].toUpperCase();
+      } else {
+        newWord += stepTwo[i].toLowerCase()
+      }
+    }
+    return newWord;
+  }
+
+const reverserOutput = reverse("ReVeRsE")
+console.log(reverserOutput);
+
+/*
+Expensive Orders
+Write a function that has two parameters: orders and cost. Return any orders that are greater than the cost.
+
+Examples
+expensiveOrders({ "a": 3000, "b": 200, "c": 1050 }, 1000)
+➞ { "a": 3000, "c": 1050 }
+
+expensiveOrders({ "Gucci Fur": 24600, "Teak Dining Table": 3200, "Louis Vutton Bag": 5550, "Dolce Gabana Heels": 4000 }, 20000)
+➞ { "Gucci Fur": 24600 }
+
+expensiveOrders({ "Deluxe Burger": 35, "Icecream Shake": 4, "Fries": 5 }, 40)
+➞ {}
+*/
+
+expensiveOrders = (orders, cost) => {
+  const shoppingCart = {};
+
+  for (let price in orders) {
+    if (orders[price] > cost) {
+      shoppingCart[price] = orders[price];
+    }
+  }
+  return shoppingCart;
+}
+
+const expensiveOrdersOutput = expensiveOrders({ "Gucci Fur": 24600, "Teak Dining Table": 3200, "Louis Vutton Bag": 5550, "Dolce Gabana Heels": 4000 }, 20000)
+console.log('expensiveOrders', expensiveOrdersOutput);
+
+/*
+Lowercase and Uppercase Map
+Write a function that creates an object with each (key, value) pair being the (lower case, upper case) versions of a letter, respectively.
+
+Examples
+mapping(["p", "s"]) ➞ { "p": "P", "s": "S" }
+
+mapping(["a", "b", "c"]) ➞ { "a": "A", "b": "B", "c": "C" }
+
+mapping(["a", "v", "y", "z"]) ➞ { "a": "A", "v": "V", "y": "Y", "z": "Z" }
+
+*/
+
+mappingTwo = (letters) => {
+  const lettersObj = {};
+  for (let letter of letters) {
+    lettersObj[letter] = letter.toUpperCase();
+  }
+  return lettersObj;
+}
+
+const mappingOutputTwo = mappingTwo(["a", "v", "y", "z"]);
+console.log('mapping', mappingOutputTwo);
+
+/*
+Create a function that splits a string into an array of identical clusters.
+
+Examples
+splitGroups("555") ➞ ["555"]
+
+splitGroups("5556667788") ➞ ["555", "666", "77", "88"]
+
+splitGroups("aaabbbaabbab") ➞ ["aaa", "bbb", "aa", "bb", "a", "b"]
+
+splitGroups("abbbcc88999&&!!!_") ➞ ["a", "bbb", "cc", "88", "999", "&&", "!!!", "_"]
+Notes
+Each cluster should only have one unique character.
+The resulting array should be in the same order as the input string.
+Should work with letters, numbers and other characters.
+*/
+
+
+splitGroups = str => matchChar =  str.match(/(.)\1*/g);
+
+
+const splitGroupsOutputTwo = splitGroups("abbbcc88999&&!!!_");
+console.log('splitGroupsOutput', splitGroupsOutputTwo);
